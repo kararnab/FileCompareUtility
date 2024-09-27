@@ -1,0 +1,41 @@
+{
+  "name": "filecompareutility",
+  "version": "1.0.0",
+  "main": "dist/main.js",
+  "scripts": {
+    "start": "npm run build:main && concurrently \"npm:serve:react\" \"npm:serve:electron\"",
+    "build": "npm run build:main && npm run build:react",
+    "build:main": "tsc --project tsconfig.main.json",
+    "build:react": "webpack --config webpack.config.js",
+    "serve:react": "webpack serve --config webpack.config.js",
+    "serve:electron": "wait-on http://localhost:8080 && electron .",
+    "package": "electron-builder",
+    "lint": "eslint .",
+    "format": "prettier --write ."
+  },
+  "keywords": ["file", "compare", "utility", "electron", "react"],
+  "author": "Arnab Kar",
+  "license": "MIT",
+  "description": "A file comparison utility built with Electron and React",
+  "dependencies": {
+    "@types/react": "^18.3.8",
+    "@types/react-dom": "^18.3.0",
+    "css-loader": "^7.1.2",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "style-loader": "^4.0.0"
+  },
+  "devDependencies": {
+    "concurrently": "^7.x",
+    "electron": "32.1.2",
+    "electron-builder": "^24.x",
+    "eslint": "^9.11.1",
+    "prettier": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.6.2",
+    "wait-on": "8.0.1",
+    "webpack": "^5.94.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
